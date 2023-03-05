@@ -35,8 +35,11 @@
 // WHEN I choose a license for my application from a list of options
 // THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
 
+// DONE
 // - 1 - need to make type of license to be LIST
+
 // - 2 - badge for chosen one added near the top of README
+
 // - 3 - notice to be added in wntitled License that explains which license the application is covered under
 
 
@@ -66,24 +69,93 @@
 // TODO: Include packages needed for this application
 
 // DONE: Inquirer package added using npm i inquirer@8.2.4 through terminal.
+const inquirer = require("inquirer");
+const fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 
 // TODO: Create an array of questions for user input
 
 const questions = [
     {
-        type: "input",
         name: "projectTitle",
-        message: "",
+        type: "input",
+        message: "Please advise your project/application title ?",
     },
-
+    {
+        name: "description",
+        type: "input",
+        message: "What your project/application is for ?",
+    },
+    {
+        name: "contentsTable",
+        type: "input",
+        message: "Kindly note that your contents will be updated once you finish your inputs, press enter to continue.",
+    },
+    {
+        name: "installation",
+        type: "input",
+        message: "Please advise on how to install it ?",
+    },
+    {
+        name: "usage",
+        type: "input",
+        message: "Please provide instructions and examples how to use it ?",
+    },
+    {
+        name: "license",
+        type: "list",
+        message: "Which license would you like to use ?",
+        // got these license choices from shields.io
+        choices: [
+            "Apache", "Apache 2", "BSD", "compliant", "GPL", "MIT", "None"
+        ],
+        // filter(val) {
+        //     return val;
+        // }
+    },
+    {
+        name: "contribuing",
+        type: "input",
+        message: "What is your contribution guidelines ?",
+    },
+    {
+        name: "tests",
+        type: "input",
+        message: "What are your test instructions ?",
+    },
+    {
+        name: "gitHubUserName",
+        type: "input",
+        message: "What is your GitHub username ?",
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "Please advise your email ?",
+    },
 ];
 
+
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+
+function writeToFile(fileName, data) {
+
+    inquirer.prompt(questions)
+    .then ((userAnswers) =>
+    fs.writeFile("README-PRO.md", JSON.stringify(userAnswers, null, "\t"), (error) =>
+    // fs.writeFile("README-PRO.md", generateMarkdown, (error) =>
+    error ? console.log(error) : console.log("Success!")
+    ));
+
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    return writeToFile("README-PRO.md", generateMarkdown);
+}
 
 // Function call to initialize app
 init();
+
+
