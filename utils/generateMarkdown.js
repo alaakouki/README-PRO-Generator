@@ -28,51 +28,46 @@ function renderLicenseSection(license) {
 //   return `
 //   # ${data.title}
 
-  function generateMarkdown(answers) {
+  function generateMarkdown(userAnswers) {
   return `
-  # ${userAnswers.title}
+# ${userAnswers.projectTitle}
 
 // NEED BADGE TO BE SHOWN AT TOP OF README
 
 
-  ## Description:
-  ${userAnswers.description}
+## Description:
+${userAnswers.description}
 
-  ## Table of Contents:
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  * [Contributing](#contributing)
-  * [Tests](#tests)
-  * [Questions](#questions)
+## Table of Contents:
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
-  ## Installation:
-  ${userAnswers.installation}
+## Installation:
+${userAnswers.installation}
   
-  ## Usage:
-  In order to use this project/application, ${userAnswers.usage}
+## Usage:
+In order to use this project/application, ${userAnswers.usage}
   
-  ## License:
-  This project/application is licensed under ${userAnswers.license} license.
+## License:
+This project/application is licensed under ${userAnswers.license} license.
   
-  ## Contributing:
-  Contributors:
-  ${userAnswers.contributing}
+## Contributing:
+Contributors:
+${userAnswers.contributing}
   
-  ## Tests:
-  ${userAnswers.tests}
+## Tests:
+${userAnswers.tests}
   
-  ## Questions:
-  ```
-` Please feel free to check my GitHub page: [${userAnswers.gitHubUserName}](https://github.com/${userAnswers.gitHubUserName})
+## Questions:
 
-Or for more information or queries, please don't hesitate to send me email to: ${userAnswers.email} `
+Please feel free to check my GitHub page: [${userAnswers.gitHubUserName}](https://github.com/${userAnswers.gitHubUserName})
 
-```
+Or for more information or queries, please don't hesitate to send me email to: ${userAnswers.email} `;
 
-
-
-`;
 }
 
 module.exports = generateMarkdown;
