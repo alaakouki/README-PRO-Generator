@@ -7,14 +7,14 @@ if (
   license === "apache 2" ||
   license === "GPL" ) {
 
-  return `[![License](https://img.shields.io/badge/license-${license}-blue)`;
+  return `![License](https://img.shields.io/badge/license-${license}-blue)`;
 
 } else if (
   license === "BSD" ||
   license === "MIT" ||
   license === "ODbL" ) {
 
-  return `[![License](https://img.shields.io/badge/license-${license}-green)`;
+  return `![License](https://img.shields.io/badge/license-${license}-green)`;
 
 } else {
   return "";
@@ -25,33 +25,28 @@ if (
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-
-  const licenseLink = "";
   
   if (license === "Apache" ) {
+    return `[Apache](https://opensource.org/license/apache-1-1/)`;
     
-    licenseLink = "https://opensource.org/license/apache-1-1/"
 
   } else if (license === "apache 2"){
-
-    licenseLink = "https://pitt.libguides.com/openlicensing/apache2"
+    return `[apache 2](https://pitt.libguides.com/openlicensing/apache2)`;
 
   } else if (license === "GPL"){
-    licenseLink =  "https://www.techtarget.com/searchdatacenter/definition/GNU-General-Public-License-GNU-GPL-or-simply-GPL"
+    return `[GPL](https://www.techtarget.com/searchdatacenter/definition/GNU-General-Public-License-GNU-GPL-or-simply-GPL)`;
 
   } else if (license === "BSD"){
-    
-    licenseLink = "https://pitt.libguides.com/openlicensing/BSD"
+    return `[BSD](https://pitt.libguides.com/openlicensing/BSD)`;
 
   } else if (license === "MIT"){
-    
-    licenseLink = "https://pitt.libguides.com/openlicensing/MIT"
+    return `[MIT](https://pitt.libguides.com/openlicensing/MIT)`;
 
   } else if (license === "ODbL"){
-    licenseLink = "https://opendatacommons.org/licenses/odbl/"
+    return `[ODbL](https://opendatacommons.org/licenses/odbl/)`;
 
   } else {
- return licenseLink;
+ return "";
   
 };
 
@@ -95,7 +90,7 @@ ${userAnswers.installation}
 In order to use this project/application, ${userAnswers.usage}
   
 ## License:
-This project/application is covered under ${userAnswers.license} license.
+This project/application is covered under [${userAnswers.license}](${renderLicenseLink(license)}) license.
 
 ## Contributing:
 ${userAnswers.contributing}
